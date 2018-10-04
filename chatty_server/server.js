@@ -20,21 +20,50 @@ const wss = new SocketServer.Server({ server });
 // When a client connects they are assigned a socket, represented by
 // the ws parameter in the callback.
 wss.on('connection', ws => {
+  const connectObject = {
+    type: 'usersOnline',
+    userCount: wss.clients.size
+  };
+  wss.clients.forEach(client => {
+    client.send(JSON.stringify(connectObject));
+  });
+
+  console.log(connectObject);
   console.log('Client connected');
 
   ws.on('message', data => {
     const dataObject = JSON.parse(data);
+    console.log(dataObject);
     dataObject.uniqueId = uuidv4();
-    wss.clients.forEach(
-      (each = client => {
-        if (client.readyState === SocketServer.OPEN) {
-          client.send(JSON.stringify(dataObject));
-        }
-      })
-    );
-    console.log(`${dataObject.username} said: ${dataObject.content}`);
+    switch (dataObject.type) {
+      case 'postNotification':
+        dataObject.type = 'incomingNotification';
+        break;
+      case 'postMessage':
+        dataObject.type = 'incomingMessage';
+        break;
+    }
+
+    console.log(dataObject);
+
+    wss.clients.forEach(client => {
+      if (client.readyState === SocketServer.OPEN) {
+        client.send(JSON.stringify(dataObject));
+      }
+    });
   });
 
   // Set up a callback for when a client closes the socket. This usually means they closed their browser.
-  ws.on('close', () => console.log('Client disconnected'));
+  ws.on('close', () => {
+    const disconnectObject = {
+      type: 'usersOnline',
+      size: wss.clients.size
+    };
+
+    wss.clients.forEach(client => {
+      client.send(JSON.stringify(disconnectObject));
+    });
+    console.log('Client disconnected');
+    console.log(disconnectObject);
+  });
 });
