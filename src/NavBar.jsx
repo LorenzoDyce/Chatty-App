@@ -1,15 +1,12 @@
 import React from 'react';
 
-class NavBar extends React.Component {
-  render() {
-    return (
-      <nav className="navbar">
-        <a href="/" className="navbar-brand">
-          Chatty
-        </a>
-      </nav>
-    );
-  }
-}
+const NavBar = ({ userCount }) => (
+  <nav className="navbar">
+    <a href="/" className="navbar-brand">
+      Chatty
+    </a>
+    <div className="usersOnline">{userCount} user(s) online</div>
+  </nav>
+);
 
 export default NavBar;

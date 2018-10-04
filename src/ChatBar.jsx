@@ -5,10 +5,17 @@ class ChatBar extends Component {
     super(props);
   }
 
-  keyPressHandler = event => {
+  MessageHandler = event => {
     if (event.key === 'Enter') {
       this.props.onMessageSubmit(event.target.value);
-      event.target.value = '';
+      console.log('Sent a Message');
+    }
+  };
+
+  NameHandler = event => {
+    if (event.key === 'Enter') {
+      this.props.onNameChange(event.target.value);
+      console.log('Sent user an update');
     }
   };
 
@@ -18,13 +25,13 @@ class ChatBar extends Component {
         <input
           className="chatbar-username"
           placeholder="Your Name (Optional)"
-          value={this.props.currentUser}
-          onChange={this.props.onNameChange}
+          defaultValue={this.props.currentUser}
+          onKeyPress={this.NameHandler}
         />
         <input
           className="chatbar-message"
           placeholder="Type a message and hit ENTER"
-          onKeyPress={this.keyPressHandler}
+          onKeyPress={this.MessageHandler}
         />
       </footer>
     );
