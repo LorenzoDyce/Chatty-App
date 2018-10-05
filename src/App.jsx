@@ -16,7 +16,7 @@ class App extends Component {
   handleNameChange = name => {
     const serverMessage = `${
       this.state.currentUser.name
-    } change their name to ${name}`;
+    } Anonymous change their name to ${name}`;
     const message = {
       content: serverMessage,
       type: 'postNotification'
