@@ -1,45 +1,47 @@
-React Boilerplate
-=====================
+A single page app that uses React, Websockets, Webpack and Babel for multi-user real-time updates. No database is involved in this app; the focus is on the client-side experience.
 
-A minimal and light dev environment for ReactJS.
+### Getting Started
 
 ### Usage
 
-Clone the boilerplate and create your own git repo.
+1. Clone this repo and create your own git repo.
 
 ```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
+git clone https://github.com/LorenzoDyce/Chatty-App.git
+$ cd into ChattyApp
+$ npm install
+$ cd into chatty_server
+$ npm install
 ```
 
-Install the dependencies and start the server.
+2. Start and run the application:
 
 ```
-npm install
-npm start
-open http://localhost:3000
+$ cd into ChattyApp and run 'npm start'
+$ cd into chatty_server and run 'npm start'
+$ open browser to http://localhost:3000
 ```
 
-### Static Files
+> The webpack may take some time to compile;
 
-You can store static files like images, fonts, etc in the `build` folder.
+> The application default websocket server address is _ws://localhost:3001_;
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
+## Final Product
 
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
+!["chatty"](https://github.com/LorenzoDyce/Chatty-App/blob/master/docs/Screen%20Shot%202018-10-04%20at%2011.04.55%20PM.png?raw=true)
 
 ### Dependencies
 
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+babel-core
+babel-loader
+babel-preset-es2015
+babel-preset-react
+css-loader
+node-sass
+sass-loader
+sockjs-client
+style-loader
+webpack
+webpack-dev-server
+react
+react-dom
