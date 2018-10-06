@@ -32,16 +32,17 @@ $ open browser to http://localhost:3000
 
 ### Dependencies
 
-babel-core
-babel-loader
-babel-preset-es2015
-babel-preset-react
-css-loader
-node-sass
-sass-loader
-sockjs-client
-style-loader
-webpack
-webpack-dev-server
-react
-react-dom
+- babel-core
+- babel-loader
+
+- babel-preset-es2015
+- babel-preset-react
+- css-loader
+- node-sass
+- sass-loader
+- sockjs-client
+- style-loader
+- webpack
+- webpack-dev-server
+- react
+- react-dom
